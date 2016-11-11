@@ -65,7 +65,7 @@ public class Signature {
 				.setIosDeviceInfo(ActivityStatus.getDefault(api, random))
 				.addAllLocationUpdates(LocationFixes.getDefault(api, builder, currentTime, random))
 				.setField22(ByteString.copyFrom(api.getSessionHash())) // random 16 bytes
-				.setField25(-8408506833887075802L);
+				.setField25(-1553869577012279119L);
 
 		SignatureOuterClass.Signature.SensorUpdate sensorInfo = SensorInfo.getDefault(api, currentTime, random);
 		if (sensorInfo != null) {
@@ -115,7 +115,7 @@ public class Signature {
 		System.arraycopy(getBytes(api.getLongitude()), 0, bytes, 8, 8);
 		System.arraycopy(getBytes(api.getAccuracy()), 0, bytes, 16, 8);
 
-		return Hasher.hash32salt(bytes, Hasher.intToByteArray(seed));
+		return Hasher.hash32Salt(bytes, Hasher.intToByteArray(seed));
 	}
 
 	private static int getLocationHash2(PokemonGo api) {
@@ -129,7 +129,7 @@ public class Signature {
 	}
 
 	private static long getRequestHash(byte[] request, byte[] auth_ticket) {
-		byte[] seed = ByteBuffer.allocate(8).putLong(Hasher.hash64(auth_ticket).longValue()).array();
-		return Hasher.hash64salt(request, seed).longValue();
+		byte[] seed = ByteBuffer.allocate(8).putLong(Hasher.hash64(auth_ticket)).array();
+		return Hasher.hash64Salt(request, seed);
 	}
 }

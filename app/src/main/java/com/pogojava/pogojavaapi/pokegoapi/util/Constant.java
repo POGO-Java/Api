@@ -20,7 +20,7 @@ package com.pogojava.pogojavaapi.pokegoapi.util;
  */
 
 public class Constant {
-	public static final int APP_VERSION = 4303;
+	public static final int APP_VERSION = 4500;
 
-	public static final String APP_VERSION_STRING = "0.43.3";
+	public static final String APP_VERSION_STRING = "0.45.0";
 }
